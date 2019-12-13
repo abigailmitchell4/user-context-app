@@ -14,6 +14,8 @@ class UserForm extends React.Component {
   
   handleSubmit = (e) => {
     e.preventDefault();
+    const user = { ...this.state, };
+    this.props.updateUser(user);
   }
   
   render() {
@@ -58,9 +60,10 @@ const ConnectedUserForm = (props) => {
         <UserForm 
           { ...props }
           username={value.username}
-          firstName={this.props.firstName }
-          lastName={this.props.lastName}
-          email={this.props.email} 
+          firstName={value.firstName }
+          lastName={value.lastName}
+          email={value.email} 
+          updateUser={value.updateUser}
         />
       )}
     </UserConsumer>
